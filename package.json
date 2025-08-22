@@ -1,0 +1,26 @@
+{
+  "name": "avaicons-mit",
+  "version": "1.0.0",
+  "description": "MIT-licensed version of Avaicons – lightweight JavaScript avatar generator.",
+  "main": "src/avatarGen.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "avatars",
+    "svg",
+    "generator",
+    "javascript",
+    "identicon",
+    "pixel",
+    "initials"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}

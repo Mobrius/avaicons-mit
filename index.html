@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avaicons MIT Demo</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: #fafafa;
+      color: #333;
+    }
+    h1 { text-align: center; }
+    form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+      flex: 1;
+    }
+    input, select {
+      padding: 0.4rem;
+      font-size: 1rem;
+    }
+    #output {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    svg {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Avaicons MIT Demo</h1>
+
+  <form id="avatarForm">
+    <label>
+      Seed:
+      <input id="seed" type="text" value="test" />
+    </label>
+    <label>
+      Variant:
+      <select id="variant">
+        <option value="initials">initials</option>
+        <option value="identicon">identicon</option>
+        <option value="pixel">pixel</option>
+      </select>
+    </label>
+    <label>
+      Size:
+      <input id="size" type="number" value="128" min="32" max="512" />
+    </label>
+    <button type="submit">Generate</button>
+  </form>
+
+  <div id="output"></div>
+
+  <script type="module">
+    import { generateAvatarSVG } from "./src/avatarGen.js";
+
+    const form = document.getElementById("avatarForm");
+    const output = document.getElementById("output");
+
+    function render() {
+      const seed = document.getElementById("seed").value || "demo";
+      const variant = document.getElementById("variant").value;
+      const size = parseInt(document.getElementById("size").value, 10) || 128;
+
+      const svg = generateAvatarSVG(seed, { variant, size });
+      output.innerHTML = svg;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      render();
+    });
+
+    // render default on load
+    render();
+  </script>
+</body>
+</html>
